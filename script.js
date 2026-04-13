@@ -49,3 +49,27 @@ h1Principal.classList.remove('important');
 h1Principal.classList.add('titulo');
 
 console.log("Ejercicio 3: Clases y nodos completado.");
+
+// --- EXTRA: Interactividad del formulario ---
+
+// 1. Buscamos el botón de Aceptar (que ya sabemos que es el btn1)
+const btnAceptar = document.getElementById('btn1');
+
+// 2. Escuchamos el click
+btnAceptar.addEventListener('click', (evento) => {
+    // Evitamos que la página se refresque y borre los datos
+    evento.preventDefault(); 
+    
+    // Capturamos el nombre del input
+    const nombreIntroducido = document.querySelector('input[type="text"]').value;
+    
+    // Capturamos el sexo marcado
+    const sexoSeleccionado = document.querySelector('input[name="sexo"]:checked')?.value;
+
+    // Mostramos la reacción
+    if (nombreIntroducido) {
+        alert(`¡DOM en acción! Hola ${nombreIntroducido}. Has seleccionado el sexo: ${sexoSeleccionado === 'h' ? 'Hombre' : 'Mujer'}.`);
+    } else {
+        alert("Por favor, escribe un nombre para que el JS pueda leerlo.");
+    }
+});
