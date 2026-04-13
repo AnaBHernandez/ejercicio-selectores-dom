@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Diario de Desarrollo - Ana Hernández</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: auto; padding: 20px; background-color: #f4f4f9; }
+        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; }
+        h2 { color: #e67e22; margin-top: 30px; border-left: 5px solid #e67e22; padding-left: 10px; }
+        code { background: #272822; color: #f8f8f2; padding: 2px 5px; border-radius: 4px; font-family: monospace; }
+        pre { background: #272822; color: #f8f8f2; padding: 15px; border-radius: 8px; overflow-x: auto; }
+        .explicacion { background: #fff; border-left: 5px solid #3498db; padding: 10px 20px; margin: 10px 0; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); }
+        .keyword { color: #66d9ef; font-weight: bold; }
+        .nota-importante { background: #fff3cd; border: 1px solid #ffeeba; padding: 15px; border-radius: 8px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <h1>📓 Diario de Desarrollo: Reto DOM Completo</h1>
+    <p><strong>Desarrolladora:</strong> Ana Hernández | <strong>Entorno:</strong> Ubuntu 24.04 LTS</p>
+
+    <h2>1. Objetivo del Ejercicio</h2>
+    <div class="explicacion">
+        Localizar elementos en el DOM y manipular sus atributos e identificadores dinámicamente con JavaScript.
+    </div>
+
+    <h2>2. Manipulación de IDs y Texto (Ej. 1 y 2)</h2>
+    <pre>
+<span class="keyword">const</span> todosLosParrafos = document.querySelectorAll(<span style="color: #e6db74;">'#lipsum p'</span>);
+<span style="color: #75715e;">// Buscamos los párrafos y les asignamos un ID dinámico</span>
+todosLosParrafos.forEach((parrafo, i) => {
+    parrafo.id = <span style="color: #e6db74;">`parrafo-${i + 1}`</span>;
+});
+
+<span style="color: #75715e;">// Cambio de texto en botones mediante ID</span>
+document.getElementById(<span style="color: #e6db74;">'btn1'</span>).innerText = <span style="color: #e6db74;">"Aceptar"</span>;
+    </pre>
+
+    <h2>3. Gestión de Clases (Ejercicio 3)</h2>
+    <div class="explicacion">
+        En este punto, he usado <code>classList</code> para aplicar estilos definidos en el CSS externo, siguiendo las buenas prácticas de separación de contenido y diseño.
+    </div>
+    <pre>
+<span style="color: #75715e;">// Añadimos la clase 'importante' al primer párrafo</span>
+todosLosParrafos[0].classList.add(<span style="color: #e6db74;">'important'</span>);
+    </pre>
+
+    <div class="nota-importante">
+        <h3>🚀 Notas de Despliegue y Soberanía Técnica</h3>
+        <ul>
+            <li><strong>Rutas Relativas:</strong> He movido el archivo <code>style.css</code> a la raíz para que el navegador lo cargue correctamente desde cualquier página.</li>
+            <li><strong>Optimización de Carpetas:</strong> He simplificado la estructura a <code>/docs</code> para evitar errores con tildes y espacios en GitHub Pages.</li>
+            <li><strong>Terminal:</strong> Todo el proceso ha sido verificado mediante <code>ls -R</code> y gestionado con Git.</li>
+        </ul>
+    </div>
+
+</body>
+</html>
