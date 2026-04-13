@@ -4,54 +4,61 @@
     <meta charset="UTF-8">
     <title>Diario de Desarrollo - Ana Hernández</title>
     <style>
-        body { font-family: sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: auto; padding: 20px; background-color: #f4f4f9; }
-        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; }
-        h2 { color: #e67e22; margin-top: 30px; border-left: 5px solid #e67e22; padding-left: 10px; }
-        code { background: #272822; color: #f8f8f2; padding: 2px 5px; border-radius: 4px; font-family: monospace; }
-        pre { background: #272822; color: #f8f8f2; padding: 15px; border-radius: 8px; overflow-x: auto; }
-        .explicacion { background: #fff; border-left: 5px solid #3498db; padding: 10px 20px; margin: 10px 0; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); }
-        .keyword { color: #66d9ef; font-weight: bold; }
-        .nota-importante { background: #fff3cd; border: 1px solid #ffeeba; padding: 15px; border-radius: 8px; margin-top: 20px; }
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: auto; padding: 20px; background-color: #f8f9fa; }
+        .seccion { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 25px; }
+        h1 { color: #2c3e50; text-align: center; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+        h2 { color: #2980b9; margin-top: 0; }
+        code { background: #e9ecef; color: #e83e8c; padding: 2px 5px; border-radius: 4px; font-weight: bold; }
+        pre { background: #2d3436; color: #dfe6e9; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 0.9em; }
+        .nota-tecnica { border-left: 5px solid #f1c40f; background: #fff9db; padding: 15px; font-style: italic; }
+        .key-concept { font-weight: bold; color: #27ae60; }
     </style>
 </head>
 <body>
 
-    <h1>📓 Diario de Desarrollo: Reto DOM Completo</h1>
-    <p><strong>Desarrolladora:</strong> Ana Hernández | <strong>Entorno:</strong> Ubuntu 24.04 LTS</p>
+    <h1>📓 Diario de Aprendizaje: Manipulación del DOM</h1>
+    <p style="text-align: center;"><strong>Desarrolladora:</strong> Ana Hernández | <strong>Sistema:</strong> Ubuntu 24.04</p>
 
-    <h2>1. Objetivo del Ejercicio</h2>
-    <div class="explicacion">
-        Localizar elementos en el DOM y manipular sus atributos e identificadores dinámicamente con JavaScript.
-    </div>
-
-    <h2>2. Manipulación de IDs y Texto (Ej. 1 y 2)</h2>
-    <pre>
-<span class="keyword">const</span> todosLosParrafos = document.querySelectorAll(<span style="color: #e6db74;">'#lipsum p'</span>);
-<span style="color: #75715e;">// Buscamos los párrafos y les asignamos un ID dinámico</span>
-todosLosParrafos.forEach((parrafo, i) => {
-    parrafo.id = <span style="color: #e6db74;">`parrafo-${i + 1}`</span>;
-});
-
-<span style="color: #75715e;">// Cambio de texto en botones mediante ID</span>
-document.getElementById(<span style="color: #e6db74;">'btn1'</span>).innerText = <span style="color: #e6db74;">"Aceptar"</span>;
-    </pre>
-
-    <h2>3. Gestión de Clases (Ejercicio 3)</h2>
-    <div class="explicacion">
-        En este punto, he usado <code>classList</code> para aplicar estilos definidos en el CSS externo, siguiendo las buenas prácticas de separación de contenido y diseño.
-    </div>
-    <pre>
-<span style="color: #75715e;">// Añadimos la clase 'importante' al primer párrafo</span>
-todosLosParrafos[0].classList.add(<span style="color: #e6db74;">'important'</span>);
-    </pre>
-
-    <div class="nota-importante">
-        <h3>🚀 Notas de Despliegue y Soberanía Técnica</h3>
+    <div class="seccion">
+        <h2>1. Selección de Nodos (Ejercicio 1)</h2>
+        <p>He aprendido que antes de cambiar algo, hay que encontrarlo. He usado dos métodos principales:</p>
         <ul>
-            <li><strong>Rutas Relativas:</strong> He movido el archivo <code>style.css</code> a la raíz para que el navegador lo cargue correctamente desde cualquier página.</li>
-            <li><strong>Optimización de Carpetas:</strong> He simplificado la estructura a <code>/docs</code> para evitar errores con tildes y espacios en GitHub Pages.</li>
-            <li><strong>Terminal:</strong> Todo el proceso ha sido verificado mediante <code>ls -R</code> y gestionado con Git.</li>
+            <li><code>document.querySelectorAll('#lipsum p')</code>: Sirve para atrapar <strong>todos</strong> los párrafos de una vez y guardarlos en una lista.</li>
+            <li><code>document.querySelector('ul li:last-child')</code>: Es muy potente porque permite usar selectores de CSS para encontrar un solo elemento específico (el último de la lista).</li>
         </ul>
+    </div>
+
+    <div class="seccion">
+        <h2>2. Modificación de Atributos e Identificadores (Ejercicio 2)</h2>
+        <p>Aquí es donde el HTML cobra vida. He realizado tres acciones clave:</p>
+        <pre>
+// 1. Asignar IDs automáticamente con un bucle forEach
+todosLosParrafos.forEach((p, i) => {
+    p.id = `parrafo-${i + 1}`; 
+});
+        </pre>
+        <p><span class="key-concept">¿Qué significa esto?</span> En lugar de ir uno a uno a mano, el código recorre la lista y le pone nombre a cada párrafo automáticamente. Es mucho más eficiente.</p>
+        <p>También he cambiado el texto de los botones usando <code>.innerText</code>. Es como editar el HTML pero desde el código JavaScript.</p>
+    </div>
+
+    <div class="seccion">
+        <h2>3. Gestión de Clases CSS (Ejercicio 3)</h2>
+        <p>Este ejercicio es vital para separar el diseño de la lógica. En lugar de cambiar colores directamente en JS, he usado <code>classList.add('important')</code>.</p>
+        <p><span class="key-concept">La ventaja:</span> El estilo (colores, fuentes) se queda en el archivo <code>style.css</code>, y JavaScript solo decide <strong>cuándo</strong> se aplica esa clase.</p>
+    </div>
+
+    <div class="seccion">
+        <h2>4. Interactividad y Formulario (El "Click")</h2>
+        <p>Para que la web reaccione al usuario, he usado un <strong>EventListener</strong>. He aprendido que:</p>
+        <ul>
+            <li><code>evento.preventDefault()</code>: Es obligatorio en los formularios para que la página no se refresque y podamos ver el mensaje de alerta.</li>
+            <li><code>.value</code>: Es la forma en la que JavaScript "lee" lo que el usuario ha escrito dentro de un cuadro de texto.</li>
+        </ul>
+    </div>
+
+    <div class="seccion nota-tecnica">
+        <h2>🚀 Aprendizaje sobre Despliegue (Soberanía Técnica)</h2>
+        <p>Al principio, mi web daba error 404 en GitHub Pages. Aprendí (por las malas) que los servidores web no entienden bien las tildes en las carpetas. Usando la terminal de Ubuntu, renombré <code>Documentación</code> a <code>docs</code> y moví el <code>style.css</code> a la raíz para que las rutas fueran sencillas y universales.</p>
     </div>
 
 </body>

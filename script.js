@@ -3,73 +3,69 @@
 // 1. Obtener todos los párrafos que están dentro del div 'lipsum'
 const todosLosParrafos = document.querySelectorAll('#lipsum p');
 
-// 2. Mostrar en la consola el primero de ellos para verificar
-console.log("El primer párrafo es:", todosLosParrafos[0]);
-
-// 1.2 El segundo párrafo de 'lipsum'
-console.log("El segundo párrafo es:", todosLosParrafos[1]);
+// 2. Mostrar en la consola para verificar
+console.log("Párrafos capturados:", todosLosParrafos.length);
 
 // 1.3 El último item de la lista
 const ultimoItem = document.querySelector('ul li:last-child');
-console.log("El último ítem es:", ultimoItem);
+console.log("El último ítem es:", ultimoItem.innerText);
 
 
-// --- EJERCICIO 2: Atributos ---
+// --- EJERCICIO 2: Atributos y Modificaciones ---
 
 // 2.1 Añadir un id único a cada párrafo usando un bucle
-// Usamos tu variable 'todosLosParrafos' para que Susana vea que la reutilizas
 todosLosParrafos.forEach((parrafo, indice) => {
     parrafo.id = `parrafo-${indice + 1}`;
-    console.log(`Párrafo ${indice + 1} actualizado con ID: ${parrafo.id}`);
 });
 
-// 2.2 Cambiar el texto de los botones (Aceptar y Cancelar)
-// IMPORTANTE: Asegúrate de que en tu HTML los botones tengan id="btn1" y id="btn2"
-document.getElementById('btn1').innerText = "Aceptar";
-document.getElementById('btn2').innerText = "Cancelar";
+// 2.2 Cambiar el texto de los botones
+const btn1 = document.getElementById('btn1');
+const btn2 = document.getElementById('btn2');
 
-// 2.3 Cambiar el color de la label del input2 a azul
+if (btn1) btn1.innerText = "Aceptar";
+if (btn2) btn2.innerText = "Cancelar";
+
+// 2.3 Cambiar el color de la label del nombre a azul
 const labelNombre = document.getElementById('input2');
 if (labelNombre) {
     labelNombre.style.color = "blue";
 }
 
-// --- EJERCICIO 3: CLASES ---
 
-// 3.1 Añadimos la clase 'importante' al primer párrafo
-todosLosParrafos[0].classList.add('important');
+// --- EJERCICIO 3: Clases ---
+
+// 3.1 Añadimos la clase 'important' al primer párrafo
+if (todosLosParrafos[0]) {
+    todosLosParrafos[0].classList.add('important');
+}
 
 // 3.2 Añadir clase 'listado' a todos los <li>
 const todosLosLi = document.querySelectorAll('ul li');
 todosLosLi.forEach(li => li.classList.add('listado'));
 
-// 3.3 Modificar el H1: quitar una clase y poner otra
-const h1Principal = document.querySelector('h1');
-h1Principal.classList.remove('important');
-h1Principal.classList.add('titulo');
 
-console.log("Ejercicio 3: Clases y nodos completado.");
+// --- FUNCIONALIDAD: Interacción con el Formulario ---
 
-// --- EXTRA: Interactividad del formulario ---
+// Escuchamos el click en el botón "Aceptar" para que "haga algo"
+if (btn1) {
+    btn1.addEventListener('click', (evento) => {
+        // Evitamos que la página se recargue (comportamiento por defecto del form)
+        evento.preventDefault(); 
+        
+        // Capturamos el valor del nombre
+        const nombreInput = document.querySelector('input[type="text"]').value;
+        
+        // Capturamos el sexo seleccionado
+        const sexoSeleccionado = document.querySelector('input[name="sexo"]:checked');
+        const genero = sexoSeleccionado ? (sexoSeleccionado.value === 'h' ? 'Hombre' : 'Mujer') : 'No especificado';
 
-// 1. Buscamos el botón de Aceptar (que ya sabemos que es el btn1)
-const btnAceptar = document.getElementById('btn1');
+        // Lanzamos la alerta si hay nombre
+        if (nombreInput.trim() !== "") {
+            alert(`¡Hola ${nombreInput}!\n\nEl DOM ha detectado que eres: ${genero}.\n\nEjercicio completado con éxito.`);
+        } else {
+            alert("Por favor, introduce tu nombre en el campo de texto.");
+        }
+    });
+}
 
-// 2. Escuchamos el click
-btnAceptar.addEventListener('click', (evento) => {
-    // Evitamos que la página se refresque y borre los datos
-    evento.preventDefault(); 
-    
-    // Capturamos el nombre del input
-    const nombreIntroducido = document.querySelector('input[type="text"]').value;
-    
-    // Capturamos el sexo marcado
-    const sexoSeleccionado = document.querySelector('input[name="sexo"]:checked')?.value;
-
-    // Mostramos la reacción
-    if (nombreIntroducido) {
-        alert(`¡DOM en acción! Hola ${nombreIntroducido}. Has seleccionado el sexo: ${sexoSeleccionado === 'h' ? 'Hombre' : 'Mujer'}.`);
-    } else {
-        alert("Por favor, escribe un nombre para que el JS pueda leerlo.");
-    }
-});
+console.log("Script cargado y listo para interactuar.");
