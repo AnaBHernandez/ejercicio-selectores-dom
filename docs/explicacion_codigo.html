@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Apuntes Técnicos - Ana Hernández</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: auto; padding: 20px; background: #f4f4f4; }
+        .card { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 5px solid #3498db; }
+        code { color: #d63031; background: #f1f2f6; padding: 2px 5px; border-radius: 4px; font-weight: bold; }
+        .desc { margin-top: 10px; color: #2d3436; }
+        h1 { color: #2c3e50; }
+        h2 { color: #2980b9; }
+    </style>
+</head>
+<body>
+    <h1>Explicación Línea a Línea del Proyecto</h1>
+
+    <div class="card">
+        <h2>Archivo: script.js</h2>
+        <p><code>const todosLosParrafos = document.querySelectorAll('#lipsum p');</code></p>
+        <p class="desc"><strong>¿Qué hace?:</strong> Busca todos los párrafos dentro de la caja 'lipsum'. Crea una lista para que luego podamos trabajar con ellos de golpe.</p>
+        
+        <p><code>parrafo.id = `parrafo-${indice + 1}`;</code></p>
+        <p class="desc"><strong>¿Qué hace?:</strong> Es un bautizo automático. En lugar de escribir IDs a mano en el HTML, el código le pone un nombre único a cada párrafo (parrafo-1, parrafo-2...).</p>
+
+        <p><code>evento.preventDefault();</code></p>
+        <p class="desc"><strong>¿Qué hace?:</strong> Esta línea es la que "frena" al navegador. Evita que la página se refresque al dar click, permitiendo que veamos nuestro mensaje de alerta.</p>
+    </div>
+
+    <div class="card">
+        <h2>Archivo: style.css</h2>
+        <p><code>.important { color: red; font-weight: bold; }</code></p>
+        <p class="desc"><strong>¿Qué hace?:</strong> Es el estilo que JavaScript activa con <code>classList.add</code>. El código decide CUÁNDO se pone rojo, pero el CSS dice QUÉ tono de rojo es.</p>
+    </div>
+
+    <div class="card">
+        <h2>Soberanía Técnica: La Carpeta /docs</h2>
+        <p class="desc">He aprendido que los servidores de GitHub no leen bien caracteres especiales. Por eso, mediante terminal, renombré <strong>Documentación</strong> a <strong>docs</strong> (minúsculas y sin tilde) para asegurar que el enlace sea universal.</p>
+    </div>
+</body>
+</html>
